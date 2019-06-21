@@ -184,8 +184,8 @@
                                                 <?php }elseif($status_a==1){if($status_dana && !$status_dana_tolak){?>
                                                     <a href="<?=base_url()?>resend/send_pengajuan_dana_dinas/<?=$id_dinas;?>" title="Resend pengajuan dana <?=$nama;?>" target='1'><i class="icon-envelope-open"></i></a>
                                                 <?php }}?>
-                                                    <a href="<?=base_url()?>dinas/hitung_ulang/<?=$id_dinas;?>" title="Recount <?=$nama;?>" target='1'><i class="icon-reload"></i></a>
-                                                    <!--a href="<?=base_url()?>dinas/reject_dinas/<?=$id_dinas;?>" title="Batalkan <?=$nama;?>" target='1'><i class="icon-close"></i></a-->
+                                                    <a href="<?=base_url()?>dinas/hitung_ulang/<?=$id_dinas;?>" title="Recount <?=$nama;?>"><i class="icon-reload"></i></a>
+                                                    <a href="" onclick="if (confirm('Batalkan?')) window.location='<?=base_url()?>dinas/reject_dinas/<?=$id_dinas;?>'; return false" title="Batalkan <?=$nama;?>" target='1' style="color:red;"><i class="icon-close"></i></a>
                                                 <?php }?>
                                             </td>
                                         </tr>
