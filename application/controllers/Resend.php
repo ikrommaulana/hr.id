@@ -690,16 +690,6 @@ class Resend extends CI_Controller {
             $emailto = $data_approver[0]->email;
             
             $token = $data_piket[0]->token;
-            if($token){
-                $token = $data_piket[0]->token;
-            }else{
-                $token = md5(date('Ymdhis'));
-                $data_approver = array(
-                    'token'         => $token
-                );
-                $this->db->where('id_piket',$id_piket);
-                $this->db->update('piket_approve',$data_approver);
-            }
 
             $message = "<html>
                             <head>
@@ -818,6 +808,21 @@ class Resend extends CI_Controller {
             $data_approver = $this->db->query("SELECT employee.*, division.init_division_name, jabatan.nama_jabatan FROM employee,division,jabatan WHERE id_employee='$id_approver' and employee.id_division = division.id_division and employee.id_position = jabatan.id_jabatan")->result();
             $emailto = $data_approver[0]->email;
             $token = $get_approver[0]->token;
+
+            //membuat token baru
+            if($token){
+                $token = $data_piket[0]->token;
+            }else{
+                $token = md5(date('Ymdhis'));
+                $data_approver = array(
+                    'token'         => $token
+                );
+                $this->db->where('id_piket',$id_piket);
+                $this->db->update('piket_approve',$data_approver);
+            }
+            //dan update ke database sesuai id piket
+
+
             $id_piket_approve_dana = $get_approver[0]->id_piket_approve_dana;
 
             $message = "<html>
@@ -989,6 +994,20 @@ class Resend extends CI_Controller {
             $data_approver = $this->db->query("SELECT employee.*, division.init_division_name, jabatan.nama_jabatan FROM employee,division,jabatan WHERE id_employee='$id_approver' and employee.id_division = division.id_division and employee.id_position = jabatan.id_jabatan")->result();
             $emailto = $data_approver[0]->email;
             $token = $get_approver[0]->token;
+
+            //membuat token baru
+            if($token){
+                $token = $get_approver[0]->token;
+            }else{
+                $token = md5(date('Ymdhis'));
+                $data_approver = array(
+                    'token'         => $token
+                );
+                $this->db->where('id_dinas',$id_dinas);
+                $this->db->update('dinas_approve_dana',$data_approver);
+            }
+            //dan update ke database sesuai id dinas
+
             $id_dinas_approve_dana = $get_approver[0]->id_dinas_approve_dana;
 
             //new total holiday

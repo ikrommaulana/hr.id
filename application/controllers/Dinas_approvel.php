@@ -22,9 +22,9 @@ class Dinas_approvel extends CI_Controller {
         }else{
             //add new
             $get_approver = $this->db->query("SELECT id_approver as ap FROM dinas_approve WHERE id_dinas='$id_dinas'")->result();
-            $id_app = $get_approver[0]->ap;
+            $id_app = $get_approver[0]->ap; //id atasan
             $nm_approver = $this->db->query("SELECT firstname as nama FROM employee WHERE id_employee='$id_app'")->result();
-            $nama_approver = $nm_approver[0]->nama;
+            $nama_approver = $nm_approver[0]->nama; //nama atasan
             //end add new
             $cek_approved = $validasi[0]->status;
             if($cek_approved==1){
