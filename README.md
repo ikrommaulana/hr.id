@@ -1,2 +1,2 @@
-# hr.id
+# HR
 Human Resources
